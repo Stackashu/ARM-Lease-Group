@@ -1,0 +1,224 @@
+.heroSection {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 15%;
+}
+
+.heroContent {
+    position: relative;
+    color: var(--primary-color); /* Changed from white to dark green */
+    z-index: 10;
+    margin-top: 50px;
+}
+
+/* The yellow outline box effect */
+.yellowBox {
+    border: 5px solid var(--primary-color); /* Changed from tertiary to primary (dark) */
+    padding: 3rem 2rem;
+    max-width: 400px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.5); /* Added semi-transparent white bg for better text readability */
+    backdrop-filter: blur(5px);
+}
+
+.subTitle {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 4rem;
+}
+
+.cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color); /* Changed from white to dark */
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: gap 0.3s;
+}
+
+.cta:hover {
+    gap: 15px;
+}
+
+.arrow {
+    transition: transform 0.3s;
+}
+
+/* Stats Section embedded at bottom right overlap */
+/* Stats Section embedded at bottom right overlap */
+.statsContainer {
+    position: absolute;
+    bottom: -60px;
+    right: 15%;
+    display: flex;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    z-index: 20;
+    border-radius: 0; /* Sharp corners as per image */
+}
+
+.statBox {
+    padding: 3rem 2.5rem;
+    min-width: 220px;
+    text-align: center;
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.statBox:hover {
+    transform: none; /* Removed movement to keep it solid */
+}
+
+.statBoxPrimary {
+    background-color: white;
+    /* color: #f7941d; Orange number on black */
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: none;
+}
+
+.statBoxSecondary {
+    background-color: var(--primary-color); /* Orange from image */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.statBoxPrimary .statNumber {
+    color: var(--primary-color);
+}
+
+.statBoxSecondary .statNumber {
+    color: white; /* White number on orange */
+}
+
+.statNumber {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: block;
+    line-height: 1;
+    font-family: sans-serif; /* Number looks sans in image */
+}
+
+.statLabel {
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: serif; /* "Satisfied Customers" is Serif in image */
+    text-transform: capitalize; /* "Satisfied Customers" */
+    letter-spacing: 0.5px;
+    opacity: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .heroSection {
+        height: auto;
+        min-height: 80vh;
+        padding: 6rem 5% 4rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .heroContent {
+        margin-top: 4rem; /* Move quote part down */
+        width: 100%;
+    }
+
+    .yellowBox {
+        border-width: 2px;
+        padding: 2rem 1.5rem;
+        max-width: 70%;
+    }
+
+    .title {
+        font-size: 2.2rem; /* Little smaller title */
+        margin-bottom: 2rem;
+    }
+
+    .statsContainer {
+        position: relative; /* Keep relative flow to avoid covering hero content */
+        bottom: auto;
+        right: auto;
+        margin-top: 3rem;
+        /* width: 30%; */
+        flex-direction: row; 
+        flex-wrap: wrap; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        z-index: 20;
+        /* To overlap "outside 50%", we move it down 50% of its own height 
+           and pull the next section up. 
+           But since Services has margin-top, let's just Translate it down.
+           And ensure Hero has enough padding so it doesn't get cut off?
+           Actually, if we Translate Y 50%, it visually moves down 50%.
+           The gap between Hero and Services will be filled by this overlap.
+        */
+        transform: translateY(50%); 
+        margin-bottom: 0; /* Let it hang. The Service section needs to respect this or ignore it.
+                             If we translate, the original space is occupied. 
+                             Services will start *after* the original space.
+                             So visually: [Hero Content] [Gap where stats were] [Services]
+                                                      [Stats Visual]
+                             This creates a gap.
+                             Better: margin-bottom: -[height/2].
+                             We don't know height.
+                             Let's simple absolute position it to `bottom: 0` but pushed down 50%?
+                             `bottom: -something`.
+                             Let's go back to absolute positioning for that "true" overlap feel, 
+                             as long as Hero has padding-bottom to accommodate.
+        */
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%); /* Center X, Move down 50% Y */
+        margin-top: 0;
+        background: white; /* Ensure bg to cover lines */
+        width: 20%; /* flexible width */
+    }
+    
+    .statBox {
+        width: 0;
+        flex: 1;
+        padding: 1rem 0.5rem; /* Smaller padding */
+        border-bottom: none;
+        border-right: 1px solid rgba(0,0,0,0.1);
+        /* Ensure background colors match the desktop logic (one white, one dark) 
+           But wait, container has bg white? 
+           The boxes have their own bg colors.
+        */
+    }
+    
+    .statBox:last-child {
+        border-right: none;
+    }
+
+    .statNumber {
+        font-size: 2rem; /* Make them small */
+    }
+
+    .statLabel {
+        font-size: 0.8rem;
+    }
+}

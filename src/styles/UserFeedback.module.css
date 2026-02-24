@@ -1,0 +1,164 @@
+.container {
+    padding: 8rem 10% 6rem;
+    min-height: 100vh;
+    background: #fcfdfc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 4rem;
+}
+
+.title {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.formCard {
+    background: white;
+    width: 100%;
+    max-width: 800px;
+    padding: 4rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.ratingSection {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.ratingLabel {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.star {
+    font-size: 2.5rem;
+    color: #e0e0e0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.star:hover,
+.starActive {
+    color: #ffc107;
+    transform: scale(1.1);
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    border: 1.5px solid #eee;
+    background: #fafafa;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(25, 42, 34, 0.05);
+}
+
+.textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.submitBtn {
+    width: 100%;
+    background: var(--primary-color);
+    color: white;
+    padding: 1.25rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.submitBtn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.privacyNote {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 6rem 5% 4rem;
+    }
+
+    .formCard {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .formGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+}

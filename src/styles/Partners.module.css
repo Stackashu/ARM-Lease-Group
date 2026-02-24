@@ -1,0 +1,68 @@
+.partnersSection {
+    padding: 6rem 0;
+    background: white;
+    overflow: hidden; /* Hide overflow for marquee */
+    white-space: nowrap;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.marqueeContainer {
+    display: inline-flex;
+    align-items: center;
+    /* Marquee animation: Move from Left to Right (so start at -100% and go to 0?) 
+       Or commonly Right to Left. 
+       User asked "transition from left to right".
+       So items should move -> THIS WAY ->.
+    */
+    animation: scrollRight 40s linear infinite;
+    width: max-content; /* Ensure it fits all content */
+}
+
+.marqueeContainer:hover {
+    animation-play-state: paused;
+}
+
+.logoBox {
+    margin: 0 3rem;
+    opacity: 0.6;
+    transition: opacity 0.3s, transform 0.3s;
+    filter: grayscale(100%);
+}
+
+.logoBox:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-50%); /* Start halfway if we duplicate list? */
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+/* To make it seamless, we typically render two sets of logos and animate from -50% to 0% (if moving right) or 0 to -50% (if moving left).
+   Moving Right: Start at -50% (showing the second half essentially on screen?) and move to 0 (showing the first half).
+   If we want Left to Right direction `->`:
+   Start at -50% (left side hidden) and move to 0.
+*/

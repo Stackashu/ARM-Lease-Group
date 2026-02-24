@@ -1,0 +1,172 @@
+.infoSection {
+    padding: 6rem 10%;
+    display: flex;
+    gap: 2rem;
+    /* Reduced gap slightly for tighter look */
+    align-items: stretch;
+    background: white;
+}
+
+.leftText {
+    flex: 1;
+    display: flex;
+    position: relative;
+    /* Enabled for absolute positioning of child */
+}
+
+.fullHeightImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contentBox {
+    /* flex: 1; */
+    background: var(--primary-color);
+    color: white;
+    padding: 4rem 3rem;
+    /* Increased padding for visual balance */
+    border-radius: 12px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.questionTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.questionText {
+    margin-bottom: 3rem;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.contactBtn {
+    background: white;
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.contactBtn:hover {
+    transform: scale(1.05);
+}
+
+.splitLayout {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.leftText {
+    flex: 1;
+}
+
+.leftText h3 {
+    font-size: 2rem;
+    /* color: var(--primary-color); */
+    margin-bottom: 1rem;
+}
+
+/* Ensure overlay title overrides the general h3 style if conflict exists */
+.imageOverlay h3 {
+    color: white !important;
+}
+
+.date {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* Placed on the right half as effectively requested */
+    width: 50%;
+    height: 100%;
+    /* Gradient: Transparent on the left (center of image) to Dark on the right (edge) */
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.9));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+    color: white;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    backdrop-filter: blur(3px);
+}
+
+.overlayTitle {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.overlayText {
+    font-size: 1.2rem;
+    /* Adjusted for balance */
+    line-height: 1.6;
+    opacity: 1;
+    /* Increased opacity */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Media Queries at the END */
+@media (max-width: 900px) {
+    .infoSection {
+        flex-direction: column;
+        padding: 4rem 5%;
+    }
+
+    .imageOverlay {
+        width: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        justify-content: flex-end;
+        padding: 2rem;
+        border-radius: 12px;
+        right: 0;
+        top: 0;
+        height: 100%;
+    }
+
+    .overlayTitle {
+        font-size: 1.5rem;
+    }
+
+    .overlayText {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .overlayTitle {
+        font-size: 1.25rem;
+    }
+
+    .overlayText {
+        font-size: 0.85rem;
+    }
+
+    .contentBox {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .questionTitle {
+        font-size: 1.5rem;
+    }
+}

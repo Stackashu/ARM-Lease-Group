@@ -1,0 +1,389 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
+    max-width: 1400px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    color: var(--primary-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scrolled {
+    width: 95%;
+    padding: 0.6rem 2rem;
+    top: 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.3);
+
+}
+
+/* Brand Container: Position Absolute to be Extreme Left */
+.brandContainer {
+    position: absolute;
+    left: 2rem;
+    /* Extreme left */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+}
+
+/* The Text Name: Initially Hidden */
+.brandName {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    opacity: 0;
+    transition: all 0.5s ease;
+    white-space: nowrap;
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Scrolled: Show Name */
+.scrolled .brandName {
+    opacity: 1;
+}
+
+/* The Floating Logo Image */
+.floatingLogo {
+    position: absolute;
+    height: 45px;
+    width: auto;
+    top: 50%;
+    /* Initial Position: Aligned with left, adjust according to padded layout or absolute */
+    left: 2rem;
+    /* Matches brand container extreme left */
+    transform: translateY(-50%);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1003;
+}
+
+/* Scrolled: Keep Logo Contained */
+.scrolled .floatingLogo {
+    left: 2rem;
+    /* Keep it on the left or move to center? User said "standard stuff". */
+    /* Wait, the user said "logo should be on the left side... and hamburger on right" for MOBILE.
+       For desktop, they didn't explicitly ask to change the "center on scroll" behavior, BUT
+       "logo of the navbar should not come outside of the navbar" implies no hanging.
+       And "standard stuff" usually means logo left, links right.
+       Let's stick to the "center on scroll" animation but make it SMALLER so it fits.
+       OR, just keep it left. 
+       Let's keep the animation but contain it.
+    */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    /* Reduced from 85px to fit */
+    padding: 5px;
+    background: transparent;
+    /* Remove white background if it's not hanging */
+    box-shadow: none;
+    /* Remove shadow if not hanging */
+    border-radius: 0;
+}
+
+/* Adjust NavLinks to ensure they don't overlap if logo is in center? 
+   Links are on Right. Logo in Center.
+   If screen is wide, it's fine.
+*/
+
+.navLinks {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.navItem {
+    position: relative;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.navItemLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+}
+
+.chevron.rotate {
+    transform: rotate(180deg);
+}
+
+/* Hover Underline Animation */
+.navItem::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+.navItem:hover::after {
+    width: 100%;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: white;
+    padding: 0.8rem;
+    min-width: 200px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navItem:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdownItem {
+    display: block;
+    padding: 0.8rem 1rem;
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-radius: 8px;
+}
+
+.dropdownItem:hover {
+    color: var(--primary-color);
+    background: #f5f5f5;
+    padding-left: 1.2rem;
+    /* Slight slide right */
+}
+
+.contactBtn {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.contactBtn:hover {
+    transform: scale(1.05);
+    background: var(--secondary-color);
+    color: white;
+    /* Ensure text visible */
+}
+
+/* Mobile Toggle - Hidden on Desktop */
+.mobileToggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+    z-index: 1004;
+    /* Above everything */
+}
+
+/* Responsive Styles */
+/* Responsive Styles */
+@media (max-width: 900px) {
+    .navbar {
+        width: 100%;
+        /* Full width */
+        max-width: 100%;
+        padding: 1rem 1.5rem;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+        justify-content: space-between;
+        /* Space between Logo and Toggle */
+        background: white;
+        /* Solid background for mobile header */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .scrolled {
+        width: 100%;
+        top: 0;
+        padding: 1rem 1.5rem;
+        border-radius: 0;
+    }
+
+    /* Hide Brand Name Text */
+    .brandContainer {
+        display: none;
+    }
+
+    /* Logo on the Left */
+    .logoLink {
+        position: static;
+        transform: none;
+        order: 1;
+        /* First item */
+        margin-right: auto;
+    }
+
+    .floatingLogo {
+        position: static;
+        transform: none !important;
+        height: 40px !important;
+        width: auto !important;
+        left: auto !important;
+        top: auto !important;
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        transition: none;
+    }
+
+    /* Scrolled state override for logo */
+    .scrolled .floatingLogo {
+        left: auto;
+        transform: none;
+        height: 40px;
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    /* Mobile Toggle on the Right */
+    .mobileToggle {
+        display: block;
+        position: static;
+        order: 2;
+        /* Second item */
+        margin-left: auto;
+        z-index: 1004;
+    }
+
+    /* Mobile Menu Overlay */
+    .navLinks {
+        position: fixed;
+        top: 60px;
+        /* Below navbar */
+        left: 0;
+        right: 0;
+        height: calc(100vh - 60px);
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        /* Extra space at bottom */
+        gap: 1.5rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+        overflow-y: auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .navLinks.mobileOpen {
+        transform: translateX(0);
+    }
+
+    .navItem {
+        font-size: 1.25rem;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .navItem:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        text-align: center;
+        padding: 0;
+        margin-top: 0.5rem;
+        display: none;
+        background: #f9f9f9;
+        width: 100%;
+        min-width: 0;
+        /* Override desktop min-width */
+        left: 0;
+        /* Reset left positioning */
+    }
+
+    .navItem:hover .dropdown,
+    .navItem:focus-within .dropdown,
+    .navItem.active .dropdown {
+        display: block;
+        padding: 0.5rem 0;
+        transform: none !important;
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+        left: unset;
+        top: unset;
+    }
+
+    .dropdownItem {
+        font-size: 1.1rem;
+        padding: 1rem;
+        color: #666;
+        text-align: center;
+        /* Center item text */
+        width: 100%;
+        display: block;
+    }
+
+    .contactBtn {
+        margin-top: 2rem;
+        padding: 1rem 3rem;
+        font-size: 1.1rem;
+        width: 85%;
+        text-align: center;
+        border-radius: 50px;
+    }
+}

@@ -1,0 +1,25 @@
+.servicesSection {
+    padding: 6rem 10%; /* Standardized spacing */
+    background: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); /* Matches new card width */
+    gap: 2rem;
+    margin-top: 5rem;
+    justify-items: center;
+}
+
+@media (max-width: 600px) {
+    .servicesSection {
+        margin-top: 2rem;
+        padding: 3rem 5%; /* Reduced padding */
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem; /* Reduced gap */
+        margin-top: 2rem;
+    }
+}

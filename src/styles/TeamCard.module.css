@@ -1,0 +1,75 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.imageContainer {
+    width: 100%;
+    aspect-ratio: 1; /* Square images */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.card:hover .image {
+    transform: scale(1.05);
+}
+
+.socials {
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+}
+
+.card:hover .socials {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.socialIcon {
+    width: 30px;
+    height: 30px;
+    background: #e88d1e; /* Using separate color or sticking to restricted? User said black or provided. 
+                           The design shows orange buttons.
+                           Use Secondary or Primary if restricted?
+                           I will use Secondary to stay safe with "provided colors". */
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.role {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
