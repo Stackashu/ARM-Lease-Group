@@ -8,7 +8,7 @@ const InfoBlock = () => {
             <div className={styles.leftText}>
                 <img src={home2} alt="Real Estate" className={styles.fullHeightImage} />
                 <div className={styles.imageOverlay}>
-                    <h3 className={styles.overlayTitle}>Sleek Modern Home</h3>
+                    <h3 className={styles.overlayTitle}>Luxurious Office Space</h3>
                     <p className={styles.overlayText}>Experience luxury living in the heart of the city.</p>
                 </div>
             </div>
@@ -16,7 +16,7 @@ const InfoBlock = () => {
             <div className={styles.contentBox}>
                 <h2 className={styles.questionTitle}>Do you still have a<br />question?</h2>
                 <p className={styles.questionText}>
-                    Move about our expert agents. What specific information are you looking for?
+                    Learn more about our expert agents. What specific information are you looking for?
                 </p>
                 <button className={styles.contactBtn}>Contact Us</button>
             </div>
