@@ -22,11 +22,11 @@ const Hero = () => {
 
             <div className={styles.statsContainer}>
                 <div className={`${styles.statBox} ${styles.statBoxPrimary}`}>
-                    <span className={styles.statNumber}><AnimatedCounter end={50} /></span>
+                    <span className={styles.statNumber}><AnimatedCounter end={50} />+</span>
                     <span className={styles.statLabel}>Satisfied Customers</span>
                 </div>
                 <div className={`${styles.statBox} ${styles.statBoxSecondary}`}>
-                    <span className={styles.statNumber}><AnimatedCounter end={100} /></span>
+                    <span className={styles.statNumber}><AnimatedCounter end={100} />+</span>
                     <span className={styles.statLabel}>Successful Projects</span>
                 </div>
             </div>
